@@ -1,0 +1,19 @@
+{% extends "entrepreneurs/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Документ: {{ document.document_type }}</h2>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <p><strong>Дата создания:</strong> {{ document.created_at|date:"d.m.Y H:i" }}</p>
+            <a href="{% url 'entrepreneurs:download_document' pk=document.pk %}" class="btn btn-primary">
+                Скачать документ
+            </a>
+            <a href="{% url 'entrepreneurs:documents' %}" class="btn btn-secondary">
+                Вернуться к списку
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

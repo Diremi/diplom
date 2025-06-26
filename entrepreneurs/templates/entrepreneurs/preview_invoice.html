@@ -1,0 +1,53 @@
+{% extends "entrepreneurs/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Предпросмотр счёта</h2>
+    
+    <div class="card mb-4">
+        <div class="card-header">Информация о счёте</div>
+        <div class="card-body">
+            <p><strong>Заказчик:</strong> {{ form_data.customer_name }}, ИНН {{ form_data.customer_inn }}</p>
+            <p><strong>Адрес:</strong> {{ form_data.customer_address }}</p>
+            <p><strong>Дата счёта:</strong> {{ form_data.date|date:"d.m.Y" }}</p>
+            <p><strong>Срок оплаты:</strong> {{ form_data.payment_due_date|date:"d.m.Y" }}</p>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-header">Позиции счёта</div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Наименование</th>
+                        <th>Кол-во</th>
+                        <th>Ед.</th>
+                        <th>Цена</th>
+                        <th>Сумма</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.unit }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="generate" class="btn btn-success">Сгенерировать документ</button>
+        <a href="{% url 'entrepreneurs:create_invoice' %}" class="btn btn-secondary">Назад к редактированию</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Портал для предпринимателей | Информационная поддержка ИП{% endblock %}
+
+{% block extra_head %}
+<style>
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+    }
+    
+    .hero-section {
+        background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+        color: white;
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+    }
+    
+    .hero-section::after {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        left: -50px;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+    }
+    
+    .features-section {
+        padding: 80px 0;
+    }
+    
+    .feature-card {
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+        font-size: 3rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+    }
+    
+    .cta-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 100px 0;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Информационный портал для индивидуальных предпринимателей</h1>
+                <p class="lead mb-5">Все инструменты для управления вашим бизнесом в одном месте. Регистрируйтесь и получите доступ к эксклюзивным возможностям!</p>
+                <div class="d-flex gap-3">
+                    <a href="{% url 'entrepreneurs:register' %}" class="btn btn-primary btn-lg px-4 py-3">
+                        Начать работу
+                    </a>
+                    <a href="#features" class="btn btn-outline-light btn-lg px-4 py-3">
+                        Узнать больше
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="features" class="features-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Наши возможности</h2>
+            <p class="lead text-muted">Все, что нужно для успешного ведения бизнеса</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Документооборот</h3>
+                        <p class="text-muted">Создавайте, храните и управляйте всеми документами вашего бизнеса в одном месте.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Налоговые расчеты</h3>
+                        <p class="text-muted">Автоматические расчеты налогов и сборов для разных систем налогообложения.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Поиск инвесторов</h3>
+                        <p class="text-muted">Выставляйте ваш бизнес-план и находите инвесторов</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-newspaper"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Актуальные новости</h3>
+                        <p class="text-muted">Самые свежие новости законодательства для предпринимателей.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Экспертная поддержка</h3>
+                        <p class="text-muted">Консультации от экспертов по налогообложению и юридическим вопросам.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Безопасность данных</h3>
+                        <p class="text-muted">Ваши данные защищены с помощью современных технологий шифрования.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Призыв к действию -->
+<section class="cta-section">
+    <div class="container">
+        <h2 class="display-5 fw-bold mb-4">Готовы начать?</h2>
+        <p class="lead mb-5">Присоединяйтесь к тысячам предпринимателей, которые уже используют наш портал</p>
+        <a href="{% url 'entrepreneurs:register' %}" class="btn btn-primary btn-lg px-5 py-3">
+            Зарегистрироваться бесплатно
+        </a>
+    </div>
+</section>
+
+
+<section id="about" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="display-5 fw-bold mb-4">О нашем проекте</h2>
+                <p class="lead mb-4">Портал для индивидуальных предпринимателей создан для того, чтобы помочь вам сосредоточиться на развитии бизнеса, а не на рутинных задачах.</p>
+                <p>Мы объединили все необходимые инструменты в одном месте, чтобы вы могли:</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-light">Экономить время на административных задачах</li>
+                    <li class="list-group-item bg-light">Следить за изменениями в законодательстве</li>
+                    <li class="list-group-item bg-light">Автоматизировать финансовую отчетность</li>
+                    <li class="list-group-item bg-light">Получать профессиональные консультации</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0">
+                <div class="card border-0 shadow">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                <i class="bi bi-lightbulb fs-1"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-0">Наша миссия</h3>
+                                <p class="text-muted mb-0">Сделать ведение бизнеса проще и эффективнее</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-success text-white rounded-circle p-3 me-3">
+                                <i class="bi bi-people fs-1"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-0">Для кого мы созданы</h3>
+                                <p class="text-muted mb-0">Для индивидуальных предпринимателей всех сфер деятельности</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-info text-white rounded-circle p-3 me-3">
+                                <i class="bi bi-graph-up-arrow fs-1"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-0">Что мы предлагаем</h3>
+                                <p class="text-muted mb-0">Инструменты для роста и развития вашего бизнеса</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

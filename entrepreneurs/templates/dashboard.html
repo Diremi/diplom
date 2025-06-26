@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3>Личный кабинет предпринимателя</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Добро пожаловать, {{ profile.company_name }}!</h4>
+                    <p class="lead">Ваш личный кабинет успешно создан.</p>
+                    
+                    <div class="mt-4">
+                        <h5>Ваши данные:</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>ИНН:</strong> {{ profile.inn }}</li>
+                            <li class="list-group-item"><strong>ОГРНИП:</strong> {{ profile.ogrnip }}</li>
+                            <li class="list-group-item"><strong>Телефон:</strong> {{ profile.phone }}</li>
+                            <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                       <form action="{% url 'entrepreneurs:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Выйти</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

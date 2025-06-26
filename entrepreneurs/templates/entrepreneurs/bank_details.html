@@ -1,0 +1,50 @@
+{% extends "entrepreneurs/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Банковские реквизиты</h2>
+    
+    <div class="card">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    {{ form.bank_name.label_tag }}
+                    {{ form.bank_name }}
+                    {% if form.bank_name.errors %}
+                        <div class="text-danger">{{ form.bank_name.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.bik.label_tag }}
+                    {{ form.bik }}
+                    {% if form.bik.errors %}
+                        <div class="text-danger">{{ form.bik.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.correspondent_account.label_tag }}
+                    {{ form.correspondent_account }}
+                    {% if form.correspondent_account.errors %}
+                        <div class="text-danger">{{ form.correspondent_account.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.payment_account.label_tag }}
+                    {{ form.payment_account }}
+                    {% if form.payment_account.errors %}
+                        <div class="text-danger">{{ form.payment_account.errors }}</div>
+                    {% endif %}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <a href="{% url 'entrepreneurs:documents' %}" class="btn btn-secondary">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
